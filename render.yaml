@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: mahesh-ai-job-search
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    disk:
+      name: job-search-data
+      mountPath: /app/data
+      sizeGB: 1
+    envVars:
+      - key: TZ
+        value: Asia/Kolkata
+      - key: ADZUNA_APP_ID
+        sync: false
+      - key: ADZUNA_APP_KEY
+        sync: false
+      - key: ADZUNA_COUNTRIES
+        value: in,gb,fr,de,nl,ie,be
+      - key: JOOBLE_API_KEY
+        sync: false
+      - key: JOOBLE_LOCATIONS
+        value: India,France,Germany,Netherlands,Ireland,Remote
